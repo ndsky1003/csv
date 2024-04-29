@@ -50,6 +50,7 @@ func (this *CSV) Close() {
 	if this.wc != nil {
 		this.wc.Close()
 	}
+	this.wc = nil
 }
 
 func (this *CSV) SetTitle(titles ...string) error {

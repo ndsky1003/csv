@@ -47,10 +47,12 @@ func NewWriter(fileName string, detectRow uint) (*CSV, error) {
 }
 
 func (this *CSV) Close() {
+	if this.w != nil {
+		this.w.Flush()
+	}
 	if this.wc != nil {
 		this.wc.Close()
 	}
-	this.wc = nil
 }
 
 func (this *CSV) SetTitle(titles ...string) error {
